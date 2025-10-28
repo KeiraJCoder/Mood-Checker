@@ -1,29 +1,130 @@
+/* ============================================
+   GLOBAL PAGE STYLING
+   ============================================ */
+
+/* Sets up the main look of the page */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;   /* Easy-to-read font */
+    text-align: center;         /* Centres text content */
+    background-color: #f9f9f9;    /* Light grey background for contrast */
+    padding: 20px;          /* Adds space around the edges */
 }
 
+/* Main page heading */
+h1 {
+    color: #333;       /* Dark grey for readability */
+}
+
+/* Adds space below the form */
+form {
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   MOOD BOARD SECTION
+   ============================================ */
+
+/* Container for all mood items that appear after adding moods */
 #moodBoard {
-    list-style: none;
-    padding: 0;
+    display: flex;        /* Places items side-by-side */
+    flex-wrap: wrap;      /* Allows items to move to a new line */
+    justify-content: center;     /* Centres the items horizontally */
+    gap: 10px;            /* Small gap between each mood item */
 }
 
-li {
-    background-color: #d9eaf7;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    transition: transform 0.3s;
-    cursor: pointer;
+/* Each individual mood item box */
+.moodItem {
+    background-color: #fff;    /* White background for clarity */
+    border: 2px solid #ccc;    /* Light border around each item */
+    padding: 15px;        /* Space inside the box */
+    border-radius: 8px;     /* Rounded corners for softer look */
+    cursor: pointer;      /* Shows a pointer cursor when hovered */
+    transition: background-color 0.3s ease; /* Smooth hover colour change */
 }
 
-li:hover {
-    background-color: #b3d9f5;
-    transform: scale(1.05);
-    }
+/* Changes colour slightly when hovering over a mood item */
+.moodItem:hover {
+    background-color: #e0f7fa;
+}
 
-.emoji {
-    font-size: 24px;
-    margin-top: 10px;
+/* ============================================
+   MOOD COLOUR KEY (HORIZONTAL TOGGLE SECTION)
+   ============================================ */
+
+/* The container for the mood colour key list */
+#moodKey {
+    display: none;          /* Hidden by default, shown via JavaScript */
+    padding: 1rem;          /* Inner space around the content */
+    border: 1px solid #ccc;     /* Light grey border */
+    margin: 0 auto 1rem auto;     /* Centres the box horizontally */
+    background-color: #ffffffc7;     /* White box with slight transparency */
+    max-width: 90%;          /* Wider so moods fit side by side */
+    text-align: center;       /* Aligns text inside the box to the center */
+    border-radius: 4px;     /* Rounded corners for a softer shape */
+    overflow-x: auto;       /* Adds horizontal scrolling if needed */
+    white-space: nowrap;    /* Keeps list items on a single line */
+}
+
+/* Centres the heading inside the key box */
+#moodKey h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* The list that contains all the moods */
+#moodKey ul {
+  list-style: none;              /* Removes default bullet points */
+  padding-left: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
+  column-gap: 2rem;                       /* Space between the 3 main columns */
+  row-gap: 1rem;                          /* Space between each mood row */
+  justify-items: center;                  /* Centre each <li> inside its grid cell */
+  align-items: center;                    /* Align vertically in each cell */
+}
+
+
+/* Each mood label and its coloured square */
+#moodKey li {
+  display: grid;                 /* Use grid inside each mood item */
+  grid-template-columns: auto 1fr; /* Small column for swatch, big for text */
+  align-items: center;           /* Vertically centre swatch and text */
+  column-gap: 0.5rem;            /* Space between the square and the label */
+  font-size: 1rem;
+  min-width: 120px;              /* Forces consistent width so columns line up */
+  text-align: left;              /* Keep label left aligned inside the item */
+}
+
+
+/* The small coloured square next to each mood name */
+.swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;   /* Space between the square and the text */
+    border: 1px solid #999;   /* Adds a visible border around each swatch */
+    border-radius: 3px;    /* Slightly rounded corners for polish */
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (FOR SMALL SCREENS)
+   ============================================ */
+
+/* On smaller devices, make the moods wrap into rows */
+@media (max-width: 600px) {
+  #moodKey ul {
+        flex-wrap: wrap;   /* Allows items to wrap on small screens */
+        justify-content: center;  /* Centres wrapped rows */
+  }
+
+  #moodKey li {
+        flex: 0 0 45%;  /* Roughly two per line when wrapping */
+  }
+
+  #moodKey {
+        max-width: 95%;  /* Slightly narrower box on small screens */
+        white-space: normal;  /* Allows wrapping instead of scrolling */
+  }
 }
