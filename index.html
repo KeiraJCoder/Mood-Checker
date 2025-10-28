@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css">
-    <title>Mood Board</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Mood Board</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Mood Board</h1>
+    <h1>My Mood Board</h1>
+
+    <button id="show">Show Mood Key</button>
+    <br>
+    <br>
+    <div id="moodKey">
+        
+        <h3>Mood Colour Key</h3>
+            <ul>
+                <li><span class="swatch" style="background:#ffe600;"></span> Happy</li>
+                <li><span class="swatch" style="background:#008cff;"></span> Sad</li>
+                <li><span class="swatch" style="background:#f63131;"></span> Angry</li>
+                <li><span class="swatch" style="background:#bcffbf;"></span> Relaxed</li>
+                <li><span class="swatch" style="background:#25fbff;"></span> Excited</li>
+                <li><span class="swatch" style="background:#8920a4;"></span> Tired</li>
+                <li><span class="swatch" style="background:#edbf05;"></span> Focused</li>
+                <li><span class="swatch" style="background:#827a7aff"></span> Scared</li>
+                <li><span class="swatch" style="background:#fb699c;"></span> Loved</li>
+            </ul>
+        </div>
 
     <form id="moodForm">
         <input type="text" id="moodInput" placeholder="Enter a mood..." />
         <button type="submit">Add Mood</button>
     </form>
 
-    <h2>Moods:</h2>
-    <ul id="moodBoard"></ul>
-
-    <p class="emoji" id="emojiArea"></p>
+    <div id="moodBoard"></div>
 
     <script src="script.js"></script>
 </body>
